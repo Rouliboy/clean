@@ -73,12 +73,17 @@ public class eventManagerClass {
         boolean hasValue = Utils.hasValue(processName);
         String formattedName = Utils.formatProcessName(processName);
 
-        MailNotifier mailNotifier = new MailNotifier();
+
         if (null != formattedName && hasValue) {
             this.eventProcessor.process(MAX_NB_EVENTS, formattedName);
         } else {
-            mailNotifier.notify(eventName, processName, date);
+            doWork(eventName, processName , date);
         }
+    }
+
+    private void doWork(String eventName, String processName, Date date) {
+        MailNotifier mailNotifier = new MailNotifier();
+        mailNotifier.notify(eventName, processName, date);
     }
 
 }
