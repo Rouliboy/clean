@@ -42,7 +42,10 @@ public class EventManagerClass {
 
     public boolean hasManagedEvent(String eventName) {
 
+        // Call is managed from processor
         boolean hasManagedEvent = this.eventProcessor.isManaged(eventName);
+
+        // Return true if isManaged, or else return false
         if (hasManagedEvent) {
             return true;
         } else {
@@ -50,8 +53,23 @@ public class EventManagerClass {
         }
     }
 
-    public void processEventWithParam(String eventName, String processName, Date date, int max, boolean hasValue, Long milliseconds) {
-        // TODO
+    public boolean hasCalledNotifierOnContext(final EventContext eventContext) {
+
+        // code temporary commented out.
+        // String notifierName = eventContext.getSource().getNotifier().getName();
+        // String presenterUID = "AZHGT";
+        // if (notifierName == presenterUID) {
+        // return false;
+        // }
+        if (null == eventContext) {
+            return false;
+        }
+        return eventContext.getSource().getNotifier().isCallable();
+    }
+
+
+    public void processEventWithParams(String eventName, String processName, Date date, int max, boolean hasValue, Long milliseconds) {
+        this.eventProcessor.process(MAX_NB_EVENTS, eventName);
     }
 
 }
