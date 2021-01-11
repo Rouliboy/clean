@@ -26,6 +26,7 @@ public class eventManagerClass {
         try {
             return a.contains(this.name);
         } catch(Exception e) {
+            // Log
         }
         return false;
     }
@@ -61,9 +62,9 @@ public class eventManagerClass {
         // if (notifierName == presenterUID) {
         // return false;
         // }
-        if (null == eventContext) {
+        if (null == eventContext)
             return false;
-        }
+
         return eventContext.getSource().getNotifier().isCallable();
     }
 
