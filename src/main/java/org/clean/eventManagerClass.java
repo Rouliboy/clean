@@ -68,8 +68,17 @@ public class eventManagerClass {
     }
 
 
-    public void processEventWithParams(String eventName, String processName, Date date, int max, boolean hasValue, Long milliseconds) {
-        this.eventProcessor.process(MAX_NB_EVENTS, eventName);
+    public void processEventWithParams(String eventName, String processName, Date date, int max, boolean flag, Long milliseconds) {
+
+        boolean hasValue = Utils.hasValue(processName);
+        String formattedName = Utils.formatProcessName(processName);
+
+        MailNotifier mailNotifier = new MailNotifier();
+        if (null != formattedName && hasValue) {
+            this.eventProcessor.process(MAX_NB_EVENTS, formattedName);
+        } else {
+            mailNotifier.notify(eventName, processName, date);
+        }
     }
 
 }
