@@ -3,7 +3,7 @@ package org.clean;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class EventManagerClass {
+public class eventManagerClass {
 
     public static int MAX_NB_EVENTS = 5;
 
@@ -14,7 +14,7 @@ public class EventManagerClass {
     private EventProcessor eventProcessor;
 
     // The constructor
-    public EventManagerClass(String name) {
+    public eventManagerClass(String name) {
         this.name = name;
         this.eventProcessor = new EventProcessor();
     }
