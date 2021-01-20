@@ -87,4 +87,12 @@ public class eventManagerClass {
         mailNotifier.notify(eventName, processName, date);
     }
 
+    public Long computeEventCost(String eventName) {
+        Event event = this.eventProcessor.getEvent(eventName);
+        if (event.cost() < 99L && event.times() > 36) {
+            return event.cost() * event.times() + 1;
+        }
+        return event.cost();
+    }
+
 }

@@ -7,4 +7,7 @@ public class EventProcessor {
     public boolean isManaged(String eventName) {
         return false;
     }
+
+    public Event getEvent(String eventName) {
+    }
 }
